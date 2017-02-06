@@ -15,6 +15,10 @@ class Boid:
 
     speed_multiplier = 1
 
+    width = 40
+    height = 20
+    color = 255, 255, 255
+
     def __init__(self, position, velocity=Vector()):
         self.position = Vector(position)
         self.velocity = velocity
