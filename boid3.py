@@ -37,7 +37,7 @@ class Boid:
                         if self.distance(other) < self.neighbor_radius]).limit(self.max_force)
 
     def update(self, flock):
-        others = filter(lambda boid: boid is not self, flock)
+        others = list(filter(lambda boid: boid is not self, flock))
         acceleration = (self.separation(others) * self.separation_weight +
                         self.alignment(others) * self.alignment_weight +
                         self.cohesion(others) * self.cohesion_weight)
