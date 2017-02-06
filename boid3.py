@@ -19,9 +19,9 @@ class Boid:
     height = 20
     color = 255, 255, 255
 
-    def __init__(self, position, velocity=Vector()):
+    def __init__(self, position, velocity=(0, 0)):
         self.position = Vector(position)
-        self.velocity = velocity
+        self.velocity = Vector(velocity)
 
     @property
     def angle(self):
