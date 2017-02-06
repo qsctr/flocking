@@ -13,6 +13,8 @@ class Boid:
     alignment_weight = 1
     cohesion_weight = 1
 
+    speed_multiplier = 1
+
     def __init__(self, position, velocity=Vector()):
         self.position = Vector(position)
         self.velocity = velocity
@@ -41,7 +43,7 @@ class Boid:
         acceleration = (self.separation(others) * self.separation_weight +
                         self.alignment(others) * self.alignment_weight +
                         self.cohesion(others) * self.cohesion_weight)
-        velocity = (self.velocity + acceleration).limit(self.max_speed)
+        velocity = (self.velocity + acceleration).limit(self.max_speed) * self.speed_multiplier
         position = self.position + self.velocity
         return Boid(position, velocity)
 
