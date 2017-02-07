@@ -1,5 +1,5 @@
 from math import atan2, degrees
-from vector import Vector
+from vector import average, Vector
 
 class Boid:
 
@@ -50,6 +50,3 @@ class Boid:
         velocity = (self.velocity + acceleration).limit(self.max_speed) * self.speed_multiplier
         position = self.position + self.velocity
         return Boid(position, velocity)
-
-def average(vectors):
-    return sum(vectors) / len(vectors) if vectors else Vector()

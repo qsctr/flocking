@@ -1,6 +1,9 @@
 from math import hypot
 from operator import add, mod, mul, sub, truediv
 
+def average(vectors):
+    return sum(vectors) / len(vectors) if vectors else Vector()
+
 def apply(op):
     return lambda self, a: Vector(map(op, self, a if hasattr(a, '__iter__') else (a, a)))
 
