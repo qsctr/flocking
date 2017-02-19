@@ -34,4 +34,4 @@ class Vector:
         return self / self.magnitude if self.magnitude else self
 
     def limit(self, n):
-        return self.normalize() * n if self.magnitude ** 2 > n ** 2 else self
+        return self.normalize() * n if self.magnitude > n else self
