@@ -2,13 +2,13 @@ from vector import average, Vector
 
 class Boid:
 
-    max_speed = 3
-    max_force = 0.03
+    max_speed = 4
+    max_force = 0.05
 
     separation_radius = 100
     neighbor_radius = 200
 
-    separation_weight = 1
+    separation_weight = 5
     alignment_weight = 1
     cohesion_weight = 1
 
