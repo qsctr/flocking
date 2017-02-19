@@ -37,11 +37,19 @@ class Boid:
         return average([other.position - self.position for other in others
                         if self.distance(other) < self.neighbor_radius]).limit(self.max_force)
 
-    def update(self, flock):
+    def mouse(self, mouse_pos):
+        if mouse_pos is None:
+            return Vector()
+        difference = Vector(mouse_pos) - self.position
+        return difference.normalize() / max(difference.magnitude, 100)
+
+    def update(self, flock, mouse_pos):
         others = list(filter(lambda boid: boid is not self, flock))
-        acceleration = (self.separation(others) * self.separation_weight +
-                        self.alignment(others) * self.alignment_weight +
-                        self.cohesion(others) * self.cohesion_weight)
-        velocity = (self.velocity + acceleration).limit(self.max_speed) * self.speed_multiplier
-        position = self.position + self.velocity
+        velocity = (self.velocity +
+                    self.separation(others) * self.separation_weight +
+                    self.alignment(others) * self.alignment_weight +
+                    self.cohesion(others) * self.cohesion_weight +
+                    self.mouse(mouse_pos) * 20
+                    ).limit(self.max_speed) * self.speed_multiplier
+        position = self.position + velocity
         return Boid(position, velocity)
