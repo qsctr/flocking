@@ -1,4 +1,3 @@
-from math import atan2, degrees
 from vector import average, Vector
 
 class Boid:
@@ -22,10 +21,6 @@ class Boid:
     def __init__(self, position, velocity=(0, 0)):
         self.position = Vector(position)
         self.velocity = Vector(velocity)
-
-    @property
-    def angle(self):
-        return degrees(atan2(*reversed(self.velocity.coordinates)))
 
     def distance(self, other):
         return (other.position - self.position).magnitude

@@ -1,4 +1,4 @@
-from math import hypot
+from math import atan2, degrees, hypot
 from operator import add, mod, mul, sub, truediv
 
 def average(vectors):
@@ -11,6 +11,10 @@ class Vector:
 
     def __init__(self, coordinates=(0, 0)):
         self.coordinates = tuple(coordinates)
+
+    @property
+    def angle(self):
+        return degrees(atan2(*reversed(self.coordinates)))
 
     @property
     def magnitude(self):
